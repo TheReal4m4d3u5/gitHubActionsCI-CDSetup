@@ -36,3 +36,9 @@ workflows:
           filters:
             branches:
               only: main
+      - deploy-to-render-production:
+          requires:
+            - deploy-to-render-staging
+          filters:
+            branches:
+              only: main
