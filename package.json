@@ -11,17 +11,24 @@
     "render-build": "npm install && npm run build && npm run seed",
     "test": "npx cypress run --browser electron",
     "test-component": "npx cypress run --component",
-    "test-gui": "npx cypress open"
+    "test:component": "npx cypress run --component",
+    "test-gui": "npx cypress open",
+    "coverage": "npx nyc report",
+    "clean": "rm -rf .nyc_output && rm -rf coverage && rm -rf server/dist && rm -rf client/dist && rm -rf **/tsconfig.tsbuildinfo",
+    "test:coverage": "npm run test:component && npm run test:e2e && npm run coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.44",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "concurrently": "^8.2.0",
     "cypress": "^13.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "vite-plugin-istanbul": "^6.0.2"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.1",
