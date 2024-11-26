@@ -24,7 +24,7 @@ jobs:
             echo "Deploying to Render Staging"
             curl $RENDER_STAGING_DEPLOYHOOK
 workflows:
-  run-tests-and-deploy-to-staging:
+  run-tests-and-deploy-to-staging-then-production:
     jobs:
       - start-server
       - cypress/run:
