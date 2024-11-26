@@ -2,8 +2,11 @@ import db from "../config/connection.js";
 import Question from "../models/Question.js";
 import cleanDB from "./cleanDb.js";
 
-const pythonQuestions = require('./pythonQuestions.json');
+import { readFile } from 'fs/promises';
 
+const pythonQuestions = JSON.parse(
+  await readFile(new URL('./pythonQuestions.json', import.meta.url), 'utf-8')
+);
 db.once('open', async () => {
   await cleanDB('Question', 'questions');
 
